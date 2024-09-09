@@ -25,25 +25,25 @@ class ProductsListAPIView(APIView):
 
 class ProductDetailAPIView(APIView):
 
-    def get_object(self, pk):
-        return get_object_or_404(Product, pk=pk)
+    def get_object(self, productId):
+        return get_object_or_404(Product, pk=productId)
 
-    def get(self, request, pk):
-        product = self.get_object(pk)
+    def get(self, request, productId):
+        product = self.get_object(productId)
         serializer = ProductSerializer(product)
         return Response(serializer.data)
 
-    def put(self, request, pk):
-        product = self.get_object(pk)
+    def put(self, request, productId):
+        product = self.get_object(productId)
         serializer = ProductSerializer(product, data=request.data, partial=True)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
 
-    def delete(self, request, pk):
-        product = self.get_object(pk)
+    def delete(self, request, productId):
+        product = self.get_object(productId)
         product.delete()
-        data = {"delete": f"Product({pk}) is deleted."}
+        data = {"delete": f"Product({productId}) is deleted."}
         return Response(data, status=status.HTTP_200_OK)
 
 
