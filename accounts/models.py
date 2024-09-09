@@ -9,8 +9,8 @@ class Account(AbstractUser):
     name = models.CharField(max_length=30)
     nickname = models.CharField(max_length=30)
     birthday =  models.DateField()
-    gender = models.CharField(max_length=5)
-    introduction = models.TextField()
+    gender = models.CharField(blank=True, max_length=5)
+    introduction = models.TextField(blank=True)
 
 
 

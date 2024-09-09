@@ -6,4 +6,4 @@ from rest_framework import generics
 # Create your views here.
 class AccountCreate(generics.CreateAPIView):
     queryset = Account.objects.all()
-    serializer_class = AccountSerializer()
+    serializer_class = AccountSerializer
